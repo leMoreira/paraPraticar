@@ -1,40 +1,47 @@
 <?php
+function compararIdade($nomeDaPessoa, $idadeDaPessoa){
 
-function comparaIdade($idadedaPessoa){
-    if($idadedaPessoa <= 17){
-    //    return "Você é menor de idade";
-    $resposta = "Você é menor de idade";
+    if ($idadeDaPessoa <= 17)
+        {
+            // return "Você é menor de idade!";
 
-    } else {
-        // return "Você é maior de idade";
-        $resposta = "Você é maior de idade";
-    }
+            $resultado = "$nomeDaPessoa, você é menor de idade!";
 
-    return $resposta;
+        } else {
+            // return "Você é maior de idade";
+            $resultado = "$nomeDaPessoa, você é maior de idade";
+        }
 
-}
-
-function mostraOlaMundo(){
-
-    // echo "<br />";
-    return "Olá mundo";
-    // echo "<br />";
+        return $resultado;
 
 }
 
-function dd($arg){
-    $resultado = "<pre>".var_dump($arg)."</pre>";
-    return $resultado;
+function textoAleatorio(){
+    return "<h1>Olá mundo, tudo bem com você?</h1>";
+
+}
+
+function dd ($param){
+    $resultado = var_dump($param);
+
+return $resultado;
+
 }
 
 
 $nome = $_POST['nome'];
 $idade = $_POST['idade'];
 
-dd($idade);
+echo compararIdade($nome, $idade);
 echo "<br />";
 
-echo comparaIdade($idade);
-// mostraOlaMundo();
+echo textoAleatorio();
 echo "<br />";
-echo "Bom dia Leandro, " . mostraOlaMundo();
+
+$array = [
+[1 => "Ola"],
+[2 => "tudo bem"],
+];
+
+echo "<pre>";
+dd($array);

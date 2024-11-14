@@ -1,35 +1,41 @@
 <?php
-$pasta = 'images/';
-$novoNome = md5(rand());
+$pasta = "images/";
 $imagem = $_FILES['imagem'];
 $extensao = pathinfo($imagem['name'], PATHINFO_EXTENSION);
 
-$caminhoDaImagem = "$pasta/$novoNome.$extensao";
+if ($extensao != 'png'){
+
+    header('location:index.html');
+}
+
+$novoNome = md5(rand());
+
+$caminhoDaImagem = "$pasta$novoNome.$extensao";
 
 $moverImagem = move_uploaded_file($imagem['tmp_name'], $caminhoDaImagem);
 
 if($moverImagem){
-    
-    $arquivos = glob("$pasta{*.jpg,*.JPG,*.png,*.gif,*.bmp}", GLOB_BRACE);
-    
-  echo   "<h3 style='text-align:center'>Total de Imagens" . count($arquivos) . "</h3>";
-
-
-    ?>
-<div>
-    <h1 style="">Imagem Recebida com sucesso</h1>
-   <?php 
-   foreach($arquivos as $img):?>
-    <img src="<?=$img?>" alt="" style="width:200px;height:200px">
-
-   <?php endforeach; ?>
-</div>
-    <?php
+    echo "Imagem carregada corretamente!";
 } else {
-?>
-    <div>
-        <h1>Ops Algo deu errado</h1>
-    </div>
-
-    <?php
+    echo "Ops.. Algo deu errado";
 }
+
+$arquivos = glob("$pasta{*.jpg,*.JPG,*.png}", GLOB_BRACE);
+
+echo "<br />";
+
+echo "Total de Imagens: ".count($arquivos);
+echo "<br />";
+?>
+
+<?php foreach($arquivos as $img): ?>
+
+<!-- <img src="<?php echo $img; ?>" alt="" width="200px"> -->
+<img src="<?=$img?>" alt="" width="200px">
+<?php endforeach; ?>
+
+
+
+
+
+
