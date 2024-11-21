@@ -53,6 +53,7 @@ INSERT INTO `capa` (`id`, `titulo`, `dias`, `capa`) VALUES
 
 CREATE TABLE `fotos` (
   `id` int(11) NOT NULL,
+  `id_capa` INT NOT NULL,
   `comentario` varchar(100) NOT NULL,
   `desc_imagem` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
